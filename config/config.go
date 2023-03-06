@@ -10,8 +10,8 @@ type Config struct {
 // Initialize ENV Configuration
 func Initialize() Config {
 	port := os.Getenv("PORT")
-	if port != "" {
-		port = "3000"
+	if port == "" {
+		port = "8081"
 	}
 
 	return Config{
