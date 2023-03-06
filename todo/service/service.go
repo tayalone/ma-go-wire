@@ -16,11 +16,12 @@ func Initialize(repo Port.Repo) Port.Srv {
 	}
 }
 
-//
+// GetByID return comment or error
 func (s *service) GetByID(id uint) (TodoDomain.Domain, error) {
 	return s.repo.GetByPK(id)
 }
 
+// GetByPostID return comments or error
 func (s *service) GetByPostID(postID uint) ([]TodoDomain.Domain, error) {
 	return s.repo.GetByPostID(postID)
 }
