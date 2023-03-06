@@ -1,19 +1,19 @@
 package service
 
 import (
+	CommentDomain "github.com/tayalone/ma-go-wire/comment/domain"
+	CommentPort "github.com/tayalone/ma-go-wire/comment/port"
 	PostDomain "github.com/tayalone/ma-go-wire/post/domain"
 	Port "github.com/tayalone/ma-go-wire/post/port"
-	TodoDomain "github.com/tayalone/ma-go-wire/todo/domain"
-	TodoPort "github.com/tayalone/ma-go-wire/todo/port"
 )
 
 type service struct {
 	repo    Port.Repo
-	todoSrv TodoPort.Srv
+	todoSrv CommentPort.Srv
 }
 
 // Initialize New Post Service
-func Initialize(repo Port.Repo, todoSrv TodoPort.Srv) Port.Srv {
+func Initialize(repo Port.Repo, todoSrv CommentPort.Srv) Port.Srv {
 	return &service{
 		repo:    repo,
 		todoSrv: todoSrv,
@@ -26,11 +26,11 @@ func (s *service) GetByID(id uint) (PostDomain.Domain, error) {
 }
 
 // GetComments teturn []comments or error
-func (s *service) GetComments(id uint) ([]TodoDomain.Domain, error) {
+func (s *service) GetComments(id uint) ([]CommentDomain.Domain, error) {
 	return s.todoSrv.GetByPostID(id)
 }
 
 // GetComment teturn comments or error
-func (s *service) GetComment(commentID uint) (TodoDomain.Domain, error) {
+func (s *service) GetComment(commentID uint) (CommentDomain.Domain, error) {
 	return s.todoSrv.GetByID(commentID)
 }

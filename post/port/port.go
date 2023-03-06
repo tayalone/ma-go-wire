@@ -1,15 +1,15 @@
 package port
 
 import (
+	CommentDomain "github.com/tayalone/ma-go-wire/comment/domain"
 	PostDomain "github.com/tayalone/ma-go-wire/post/domain"
-	TodoDomain "github.com/tayalone/ma-go-wire/todo/domain"
 )
 
 // Srv is interface of Post Service
 type Srv interface {
 	GetByID(id uint) (PostDomain.Domain, error)
-	GetComments(id uint) ([]TodoDomain.Domain, error)
-	GetComment(commentID uint) (TodoDomain.Domain, error)
+	GetComments(id uint) ([]CommentDomain.Domain, error)
+	GetComment(commentID uint) (CommentDomain.Domain, error)
 }
 
 // Repo is interface of Post Repository
